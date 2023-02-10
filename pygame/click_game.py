@@ -1,14 +1,18 @@
-stick = Actor('charater')
-stick.topright = 0, 10
+ghost = Actor('ghost')
+ghost.topright = 0, 10
 
 WIDTH=500
-HEIGHT= stick.height + 50
+HEIGHT= ghost.height + 50
 
 def draw():
     screen.clear()
-    stick.draw()
+    ghost.draw()
 
 def update():
-    stick.left = stick.left +2
-    if stick.left>WIDTH:
-        stick.right=0
+    ghost.left =ghost.left +2
+    if ghost.left>WIDTH:
+        ghost.right=0
+def on_mouse_down(pos):
+    if ghost.collidepoint(pos):
+        sounds.ghostnoise.play()
+        ghost.image='ghost_suprised'
